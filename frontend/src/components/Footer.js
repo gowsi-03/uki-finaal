@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEnvelope, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
+// import { FaEnvelope, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./footer.css";

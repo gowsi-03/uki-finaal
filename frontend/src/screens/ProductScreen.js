@@ -325,7 +325,7 @@ const ProductScreen = () => {
       <div className='d-flex justify-content-between align-items-center'>
         <h1 className='fs-6 '>Products</h1>
         <button
-          className='btn btn-light bg-primary btn-sm'
+          className='btn btn-info  btn-sm'
           data-bs-toggle='modal'
           data-bs-target='#productModal'
         >

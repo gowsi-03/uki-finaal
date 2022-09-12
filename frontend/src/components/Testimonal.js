@@ -20,7 +20,7 @@ const Testimonal = () => {
   };
   return (
     <Slider {...settings}>
-      {/* <div>
+      <div>
         <p className="review__text">
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
           atque, quam minus totam maiores laborum! Impedit consectetur illum
@@ -43,7 +43,7 @@ const Testimonal = () => {
           <img src={ava02} alt="avatar" className=" rounded" />
           <h6>Mitchell Marsh</h6>
         </div>
-      </div> */}
+      </div>
       <div>
         <p className="review__text">
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis

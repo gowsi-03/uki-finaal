@@ -51,7 +51,7 @@ const Navigation = () => {
             data-bs-toggle='dropdown'
             aria-expanded='false'
           >
-            Admin
+                Admin
           </span>
           <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
             <li>
@@ -82,11 +82,7 @@ const Navigation = () => {
 
   const guestLinks = (
     <ul className='navbar-nav mr-right mb-2 mb-lg-0'>
-      <li className='nav-item'>
-        <Link to='/register' className='nav-link'>
-          Register
-        </Link>
-      </li>
+      
       <li className='nav-item'>
         <Link to='/login' className='nav-link'>
           Login
