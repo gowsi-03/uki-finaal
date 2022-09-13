@@ -84,16 +84,14 @@ const CheckoutScreen = ({ history }) => {
                 onChange={(e) => setCity(e.target.value)}
               >
                 <option value=''>---------</option>
-                <option value='Mogadishu'>Mogadishu</option>
-                <option value='Hargeisa'>Hargeisa</option>
-                <option value='Kismayo'>Kismayo</option>
-                <option value='Balatweyn'>Balatweyn</option>
-                <option value='Baydhabo'>Baydhabo</option>
+                <option value='Jaffna'>Jaffna</option>
+                <option value='Nelliady'>Nelliady</option>
+                <option value='PointPedro'>PointPedro</option>
               </select>
             </div>
             <div className='mb-3'>
               <label htmlFor='address' className='form-label'>
-                Billing Address
+                Delivery Address
               </label>
               <input
                 type='text'
@@ -117,6 +115,7 @@ const CheckoutScreen = ({ history }) => {
                 id='mobile'
                 name='mobile'
                 placeholder='Mobile Number'
+                maxLength={9}
                 required
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}

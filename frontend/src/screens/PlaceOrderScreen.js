@@ -7,7 +7,7 @@ import { ORDER_PAY_RESET } from '../constants/orderConstants'
 
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { PayPalButton } from 'react-paypal-button-v2'
+ import { PayPalButton } from 'react-paypal-button-v2'
 import Moment from 'react-moment'
 import moment from 'moment'
 
@@ -84,7 +84,7 @@ const PlaceOrderScreen = ({ match }) => {
                       </Moment>
                     </li>
                     <li className='list-group-item'>
-                      Total: ${addDecimal(order.totalPrice)}
+                      Total:  Rs&nbsp;{addDecimal(order.totalPrice)}
                     </li>
 
                     <li
@@ -175,12 +175,12 @@ const PlaceOrderScreen = ({ match }) => {
                           {item.name}
                         </th>
                         <th className='align-middle'>
-                          ${addDecimal(item.price)}
+                          Rs&nbsp;{addDecimal(item.price)}
                         </th>
 
                         <th className='align-middle'>{item.qty}</th>
                         <th className='align-middle'>
-                          ${addDecimal(item.price * item.qty)}
+                        Rs&nbsp;{addDecimal(item.price * item.qty)}
                         </th>
                       </tr>
                     ))}
@@ -191,7 +191,7 @@ const PlaceOrderScreen = ({ match }) => {
                       <td></td>
                       <td className='fw-bold'>Subtotal</td>
                       <td className='fw-bold'>
-                        ${addDecimal(order.totalPrice)}
+                      Rs&nbsp;{addDecimal(order.totalPrice)}
                       </td>
                     </tr>
                   </tfoot>

@@ -1,74 +1,74 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Message from '../components/Message'
-import Loader from '../components/Loader'
-import { listProduct } from '../actions/productActions'
-import { FaCartPlus } from 'react-icons/fa'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
+import { listProduct } from "../actions/productActions";
+import { FaCartPlus } from "react-icons/fa";
 
 const ProductDetailScreen = ({ match, history }) => {
-  const productId = match.params.id
-  const [qty, setQty] = useState(1)
-  const [totalPrice, setTotalPrice] = useState(1)
+  const productId = match.params.id;
+  const [qty, setQty] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(1);
 
-  const dispatch = useDispatch()
-  const productList = useSelector((state) => state.productList)
-  const { products, error, loading } = productList
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { products, error, loading } = productList;
 
   useEffect(() => {
-    dispatch(listProduct())
-  }, [dispatch])
+    dispatch(listProduct());
+  }, [dispatch]);
 
   const productsObj =
-    products && products.filter((product) => product._id === productId)
-  const product = productsObj && productsObj[0]
+    products && products.filter((product) => product._id === productId);
+  const product = productsObj && productsObj[0];
 
   useEffect(() => {
-    product && setTotalPrice(product && product.price * qty)
-  }, [qty, product])
+    product && setTotalPrice(product && product.price * qty);
+  }, [qty, product]);
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`)
-  }
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
 
   return (
     <>
       {loading || !product ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant="danger">{error}</Message>
       ) : (
-        <div className='container'>
-          <div className='row'>
-            <div className='col-6'>
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
               <img
                 src={product.image.imagePath}
-                className='img-fluid w-100'
-                alt=''
+                className="img-fluid w-95"
+                alt=""
               />
             </div>
-            <div className='col-6 my-auto'>
-              <h1 className='fs-3'> {product.name}</h1>
-              <h2 className='fs-4 custom-text-color'> ${totalPrice}</h2>
+            <div className="col-6 my-auto">
+              <h1 className="fs-3"> {product.name}</h1>
+              <h2 className="fs-6 custom-text-color"> Rs&nbsp;{totalPrice}</h2>
               <p>
                 <span> Category: {product.category} </span> <br />
                 <span>
-                  {' '}
-                  Status:{' '}
-                  {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}{' '}
-                </span>{' '}
+                  {" "}
+                  Status:{" "}
+                  {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}{" "}
+                </span>{" "}
                 <br />
               </p>
               <hr />
-              <p>{product.description}</p>
+              <p>Discription: {product.description}</p>
               <hr />
-              <p className='text-center'>
+              <p className="text-center">
                 <select
-                  className='btn border-1 border-success btn-sm shadow-none mx-1'
-                  name='qty'
+                  className="btn border-1 border-success btn-sm shadow-none mx-1"
+                  name="qty"
                   value={qty}
                   onChange={(e) => setQty(e.target.value)}
                 >
-                  <option value='0' disabled='disabled'>
+                  <option value="0" disabled="disabled">
                     QTY
                   </option>
                   {[...Array(product.countInStock).keys()].map((x) => (
@@ -78,7 +78,7 @@ const ProductDetailScreen = ({ match, history }) => {
                   ))}
                 </select>
                 <button
-                  className='btn btn-info bg-primary rounded-pill btn-m'
+                  className="btn btn-info bg-primary rounded-pill btn-m"
                   onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
                 >
@@ -90,7 +90,7 @@ const ProductDetailScreen = ({ match, history }) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default ProductDetailScreen
+export default ProductDetailScreen;

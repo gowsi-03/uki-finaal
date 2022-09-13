@@ -1,8 +1,9 @@
 import React from 'react'
-import { FaCartPlus, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
+import { FaShoppingBag, FaUser, FaPhoneAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../actions/userActions'
+import { logout } from '../actions/userActions' 
+import Shopping from "../assets/images/shopping.png"
 
 const Navigation = () => {
   const dispatch = useDispatch()
@@ -85,7 +86,7 @@ const Navigation = () => {
       
       <li className='nav-item'>
         <Link to='/login' className='nav-link'>
-          Login
+       <FaUser fontSize='20px' />
         </Link>
       </li>
     </ul>
@@ -102,7 +103,7 @@ const Navigation = () => {
       </div> */}
       
 
-      <nav className='navbar navbar-expand-md navbar-light bg-light shadow-sm '>
+      <nav className='navbar navbar-expand-md '>
         
         <div className='container'>
           <Link className='navbar-brand fw-bold fs-5' to='/'>
@@ -128,7 +129,7 @@ const Navigation = () => {
                   aria-current='page'
                   to='/cart'
                 >
-                  <FaCartPlus fontSize='20px' />{' '}
+                  <FaShoppingBag fontSize='20px' />{' '}
                   <sup>{cartItems && cartItems.length}</sup>
                 </Link>
               </li>

@@ -1,8 +1,8 @@
 import React from "react";
-// import { FaEnvelope, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./footer.css";
+import logo from '../assets/images/logo.png'
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
         <Row>
           <Col lg="3" md="4" sm="6">
             <div className=" footer__logo text-start">
-              {/* <img src={logo} alt="logo" /> */}
+              <img src={logo} alt="logo" />
               <h5>Vethuppi</h5>
               <p>Timely deliveries lead to an excellent customer experience.</p>
             </div>
@@ -60,7 +60,7 @@ const Footer = () => {
           </Col>
         </Row>
 
-        <Row className="mt-5">
+        {/* <Row className="mt-5">
           <Col lg="6" md="6">
             <p className="copyright__text">
               Copyright - 2022, website made by Vethuppi Team. All Rights
@@ -98,7 +98,7 @@ const Footer = () => {
               </span>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </footer>
   );

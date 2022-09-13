@@ -77,7 +77,7 @@ const CartScreen = ({ match, location, history }) => {
                   />{' '}
                   {item.name}
                 </th>
-                <th className='align-middle'>${addDecimal(item.price)}</th>
+                <th className='align-middle'>Rs&nbsp;{addDecimal(item.price)}</th>
                 <th className='align-middle'>
                   <select
                     className='btn border-1 border-light btn-sm shadow-none mx-1 rounded-pill'
@@ -96,7 +96,7 @@ const CartScreen = ({ match, location, history }) => {
                   </select>
                 </th>
                 <th className='align-middle'>
-                  ${addDecimal(item.price * item.qty)}
+                  Rs&nbsp;{addDecimal(item.price * item.qty)}
                 </th>
                 <th className='align-middle'>
                   <button

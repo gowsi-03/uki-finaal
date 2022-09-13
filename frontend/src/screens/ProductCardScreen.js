@@ -23,18 +23,18 @@ const ProductScreen = ({ currentItems }) => {
               </Link>
               <div className='card-body'>
                 <p className='card-text'>
-                  <span className='fw-light '>{item.category}</span> <br />
+                  {/* <span className='fw-light '>{item.category}</span> <br /> */}
                   <Link to={`/product/${item._id}`}>
                     <span className='fw-bold fs-6'>{item.name}</span>
                   </Link>{' '}
                   <br />
                 </p>
                 <div className='btn-group'>
-                  <button className='btn  btn-info bg-primary  btn-sm rounded-pill'>
+                  <p>
                     <span className='fw-lighter fs-6'>
-                      ${addDecimal(item.price)}
+                      Rs&nbsp;{addDecimal(item.price)}
                     </span>
-                  </button>
+                  </p>
                 </div>
               </div>
             </div>

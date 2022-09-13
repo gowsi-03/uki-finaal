@@ -1,85 +1,85 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Message from '../components/Message'
-import Loader from '../components/Loader'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
 import {
   listProduct,
   createProduct,
   updateProduct,
   deleteProduct,
-} from '../actions/productActions'
-import { confirmAlert } from 'react-confirm-alert'
-import { Confirm } from '../components/Confirm'
-import { FaTrash, FaEdit, FaPlus } from 'react-icons/fa'
-import Pagination from '../components/Pagination'
+} from "../actions/productActions";
+import { confirmAlert } from "react-confirm-alert";
+import { Confirm } from "../components/Confirm";
+import { FaTrash, FaEdit, FaPlus } from "react-icons/fa";
+import Pagination from "../components/Pagination";
 
 const ProductScreen = () => {
-  const [edit, setEdit] = useState(false)
-  const [id, setId] = useState(null)
-  const [name, setName] = useState('')
-  const [brand, setBrand] = useState('')
-  const [category, setCategory] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
-  const [costPrice, setCostPrice] = useState('')
-  const [countInStock, setCountInStock] = useState('')
-  const [search, setSearch] = useState('')
-  const [image, setImage] = useState('')
+  const [edit, setEdit] = useState(false);
+  const [id, setId] = useState(null);
+  const [name, setName] = useState("");
+  const [brand, setBrand] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [costPrice, setCostPrice] = useState("");
+  const [countInStock, setCountInStock] = useState("");
+  const [search, setSearch] = useState("");
+  const [image, setImage] = useState("");
 
-  const dispatch = useDispatch()
-  const productList = useSelector((state) => state.productList)
-  const { products, error, loading } = productList
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { products, error, loading } = productList;
 
-  const productCreate = useSelector((state) => state.productCreate)
+  const productCreate = useSelector((state) => state.productCreate);
   const {
     error: errorCreate,
     loading: loadingCreate,
     success: successCreate,
-  } = productCreate
+  } = productCreate;
 
-  const productUpdate = useSelector((state) => state.productUpdate)
+  const productUpdate = useSelector((state) => state.productUpdate);
   const {
     error: errorUpdate,
     loading: loadingUpdate,
     success: successUpdate,
-  } = productUpdate
+  } = productUpdate;
 
-  const productDelete = useSelector((state) => state.productDelete)
+  const productDelete = useSelector((state) => state.productDelete);
   const {
     error: errorDelete,
     loading: loadingDelete,
     success: successDelete,
-  } = productDelete
+  } = productDelete;
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const formCleanHandler = () => {
-    setName('')
-    setBrand('')
-    setCategory('')
-    setDescription('')
-    setCountInStock('')
-    setPrice('')
-    setCostPrice('')
-    setEdit(false)
-    setImage('')
-  }
+    setName("");
+    setBrand("");
+    setCategory("");
+    setDescription("");
+    setCountInStock("");
+    setPrice("");
+    setCostPrice("");
+    setEdit(false);
+    setImage("");
+  };
 
   useEffect(() => {
-    dispatch(listProduct())
+    dispatch(listProduct());
     if (successCreate || successUpdate) {
-      formCleanHandler()
+      formCleanHandler();
     }
     // eslint-disable-next-line
-  }, [dispatch, successCreate, successUpdate, successDelete])
+  }, [dispatch, successCreate, successUpdate, successDelete]);
 
   const deleteHandler = (id) => {
-    confirmAlert(Confirm(() => dispatch(deleteProduct(id))))
-  }
+    confirmAlert(Confirm(() => dispatch(deleteProduct(id))));
+  };
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     console.log({
       name,
@@ -90,227 +90,225 @@ const ProductScreen = () => {
       brand,
       costPrice,
       countInStock,
-    })
+    });
 
-    const formData = new FormData()
-    formData.append('name', name)
-    formData.append('category', category)
-    formData.append('description', description)
-    formData.append('image', image)
-    formData.append('price', price)
-    formData.append('brand', brand)
-    formData.append('costPrice', costPrice)
-    formData.append('countInStock', countInStock)
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("description", description);
+    formData.append("image", image);
+    formData.append("price", price);
+    formData.append("brand", brand);
+    formData.append("costPrice", costPrice);
+    formData.append("countInStock", countInStock);
 
     edit
       ? dispatch(updateProduct(formData, id))
-      : dispatch(createProduct(formData))
-  }
+      : dispatch(createProduct(formData));
+  };
 
   const editHandler = (e) => {
-    setBrand(e.brand)
-    setCategory(e.category)
-    setDescription(e.description)
-    setCountInStock(e.countInStock)
-    setPrice(e.price)
-    setCostPrice(e.costPrice)
-    setName(e.name)
-    setId(e._id)
-    setEdit(true)
-  }
+    setBrand(e.brand);
+    setCategory(e.category);
+    setDescription(e.description);
+    setCountInStock(e.countInStock);
+    setPrice(e.price);
+    setCostPrice(e.costPrice);
+    setName(e.name);
+    setId(e._id);
+    setEdit(true);
+  };
 
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 10
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const itemsPerPage = 10;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const filterOrder =
     products &&
     products.filter((prod) =>
       prod.name.toLowerCase().includes(search.toLowerCase())
-    )
+    );
   const currentItems =
-    filterOrder && filterOrder.slice(indexOfFirstItem, indexOfLastItem)
-  const totalItems = products && Math.ceil(products.length / itemsPerPage)
+    filterOrder && filterOrder.slice(indexOfFirstItem, indexOfLastItem);
+  const totalItems = products && Math.ceil(products.length / itemsPerPage);
 
   return (
-    <div className='container'>
+    <div className="container">
       <div
-        className='modal fade '
-        id='productModal'
-        data-bs-backdrop='static'
-        data-bs-keyboard='false'
-        tabIndex='-1'
-        aria-labelledby='productModalLabel'
-        aria-hidden='true'
+        className="modal fade "
+        id="productModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabIndex="-1"
+        aria-labelledby="productModalLabel"
+        aria-hidden="true"
       >
-        <div className='modal-dialog'>
-          <div className='modal-content modal-background'>
-            <div className='modal-header'>
-              <h5 className='modal-title ' id='productModalLabel'>
-                {edit ? 'Edit Product' : 'Add Product'}
+        <div className="modal-dialog">
+          <div className="modal-content modal-background">
+            <div className="modal-header">
+              <h5 className="modal-title " id="productModalLabel">
+                {edit ? "Edit Product" : "Add Product"}
               </h5>
               <button
-                type='button'
-                className='btn-close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
                 onClick={formCleanHandler}
               ></button>
             </div>
-            <div className='modal-body'>
+            <div className="modal-body">
               {successCreate && (
-                <Message variant='success'>
+                <Message variant="success">
                   Product Registered Successfully
                 </Message>
               )}
               {loadingCreate ? (
                 <Loader />
               ) : (
-                errorCreate && <Message variant='danger'>{errorCreate}</Message>
+                errorCreate && <Message variant="danger">{errorCreate}</Message>
               )}
 
               {successUpdate && (
-                <Message variant='success'>
+                <Message variant="success">
                   Product Updated Successfully
                 </Message>
               )}
               {loadingUpdate ? (
                 <Loader />
               ) : (
-                errorUpdate && <Message variant='danger'>{errorUpdate}</Message>
+                errorUpdate && <Message variant="danger">{errorUpdate}</Message>
               )}
               {loading ? (
                 <Loader />
               ) : error ? (
-                <Message variant='danger'>{error}</Message>
+                <Message variant="danger">{error}</Message>
               ) : (
                 <form onSubmit={submitHandler}>
-                  <div className='row gy-2'>
-                    <div className='form-group'>
-                      <label htmlFor='name'>Product Name</label>
+                  <div className="row gy-2">
+                    <div className="form-group">
+                      <label htmlFor="name">Product Name</label>
                       <input
                         required
-                        name='name'
+                        name="name"
                         onChange={(e) => setName(e.target.value)}
-                        type='text'
+                        type="text"
                         value={name}
-                        className='form-control '
-                        placeholder='Enter product name'
+                        className="form-control "
+                        placeholder="Enter product name"
                       />
                     </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='brand'>Product Brand</label>
+                    {/* <div className="form-group">
+                      <label htmlFor="brand">Product Brand</label>
                       <input
                         required
-                        name='brand'
+                        name="brand"
                         onChange={(e) => setBrand(e.target.value)}
-                        type='text'
+                        type="text"
                         value={brand}
-                        className='form-control '
-                        placeholder='Enter product brand'
+                        className="form-control "
+                        placeholder="Enter product brand"
                       />
-                    </div>
+                    </div> */}
 
-                    <div className='form-group'>
-                      <label htmlFor='category'>Product Category</label>
+                    <div className="form-group">
+                      <label htmlFor="category">Product Category</label>
                       <select
                         required
-                        name='category'
+                        name="category"
                         onChange={(e) => setCategory(e.target.value)}
-                        type='text'
+                        type="text"
                         value={category}
-                        className='form-control '
-                        placeholder='Enter product category'
+                        className="form-control "
+                        placeholder="Enter product category"
                       >
-                        <option value='' disabled>
+                        <option value="" disabled>
                           -----------
                         </option>
-                        <option value='Men'>Men</option>
-                        <option value='Women'>Women</option>
-                        <option value='Accessories'>Accessories</option>
-                        <option value='Electronics'>Electronics</option>
+                        <option value="bread">Bread</option>
+                        <option value="bun">Bun</option>
                       </select>
                     </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='costPrice'>Product Cost Price</label>
+                    {/* <div className="form-group">
+                      <label htmlFor="costPrice">Product Cost Price</label>
                       <input
                         required
-                        name='costPrice'
+                        name="costPrice"
                         onChange={(e) => setCostPrice(e.target.value)}
-                        type='number'
-                        min='0'
+                        type="number"
+                        min="0"
                         value={costPrice}
-                        className='form-control '
-                        placeholder='Enter product cost price'
+                        className="form-control "
+                        placeholder="Enter product cost price"
                       />
-                    </div>
+                    </div> */}
 
-                    <div className='form-group'>
-                      <label htmlFor='price'>Product Price</label>
+                    <div className="form-group">
+                      <label htmlFor="price">Product Price</label>
                       <input
                         required
-                        name='price'
+                        name="price"
                         onChange={(e) => setPrice(e.target.value)}
-                        type='number'
-                        min='0'
+                        type="number"
+                        min="0"
                         value={price}
-                        className='form-control '
-                        placeholder='Enter product price'
+                        className="form-control "
+                        placeholder="Enter product price"
                       />
                     </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='countInStock'>Count In Stock</label>
+                    <div className="form-group">
+                      <label htmlFor="countInStock">Count In Stock</label>
                       <input
                         required
-                        name='countInStock'
+                        name="countInStock"
                         onChange={(e) => setCountInStock(e.target.value)}
-                        type='number'
-                        min='0'
+                        type="number"
+                        min="0"
                         value={countInStock}
-                        className='form-control '
-                        placeholder='Enter product count in stock'
+                        className="form-control "
+                        placeholder="Enter product count in stock"
                       />
                     </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='description'>Description</label>
+                    <div className="form-group">
+                      <label htmlFor="description">Description</label>
                       <textarea
-                        cols='10'
-                        rows='5'
+                        cols="10"
+                        rows="5"
                         required
-                        name='description'
+                        name="description"
                         onChange={(e) => setDescription(e.target.value)}
-                        type='text'
+                        type="text"
                         value={description}
-                        className='form-control '
-                        placeholder='Enter product description'
+                        className="form-control "
+                        placeholder="Enter product description"
                       />
                     </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='file'>Image Upload </label>
+                    <div className="form-group">
+                      <label htmlFor="file">Image Upload </label>
 
                       <input
-                        type='file'
-                        className='form-file-input form-control'
+                        type="file"
+                        className="form-file-input form-control"
                         onChange={(e) => setImage(e.target.files[0])}
                       />
                     </div>
 
-                    <div className='modal-footer'>
+                    <div className="modal-footer">
                       <button
-                        type='button'
-                        className='btn btn-secondary'
-                        data-bs-dismiss='modal'
+                        type="button"
+                        className="btn btn-secondary"
+                        data-bs-dismiss="modal"
                         onClick={formCleanHandler}
                       >
                         Close
                       </button>
-                      <button type='submit' className='btn btn-primary'>
+                      <button type="submit" className="btn btn-primary">
                         Submit
                       </button>
                     </div>
@@ -322,53 +320,51 @@ const ProductScreen = () => {
         </div>
       </div>
 
-      <div className='d-flex justify-content-between align-items-center'>
-        <h1 className='fs-6 '>Products</h1>
+      <div className="d-flex justify-content-between align-items-center">
+        <h1 className="fs-6 ">Products</h1>
         <button
-          className='btn btn-info  btn-sm'
-          data-bs-toggle='modal'
-          data-bs-target='#productModal'
+          className="btn btn-info  btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#productModal"
         >
-          {' '}
+          {" "}
           <FaPlus /> REGISTER NEW PRODUCT
         </button>
       </div>
 
-      <div className='input-group my-3'>
+      <div className="input-group my-3">
         <input
-          type='text'
-          className='form-control rounded-pill shadow'
-          placeholder='Search by product name'
-          name='search'
-          min='0'
+          type="text"
+          className="form-control rounded-pill shadow"
+          placeholder="Search by product name"
+          name="search"
+          min="0"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          aria-describedby='basic-addon2'
+          aria-describedby="basic-addon2"
         />
       </div>
 
       {successDelete && (
-        <Message variant='success'>Product Deleted Successfully</Message>
+        <Message variant="success">Product Deleted Successfully</Message>
       )}
       {loadingDelete ? (
         <Loader />
       ) : (
-        errorDelete && <Message variant='danger'>{errorDelete}</Message>
+        errorDelete && <Message variant="danger">{errorDelete}</Message>
       )}
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <div className='table-responsive'>
-            <table className='table table-sm hover bordered striped '>
+          <div className="table-responsive">
+            <table className="table table-sm hover bordered striped ">
               <thead>
                 <tr>
                   <th>Product</th>
-                  <th>Cost Price</th>
                   <th>Selling Price</th>
-                  <td>Brand</td>
                   <td>Category</td>
                   <th>Stock</th>
                   <th>Actions</th>
@@ -379,27 +375,25 @@ const ProductScreen = () => {
                   currentItems.map((prod) => (
                     <tr
                       key={prod._id}
-                      style={{ color: `${prod.countInStock < 5 && 'red'}` }}
+                      style={{ color: `${prod.countInStock < 5 && "red"}` }}
                     >
                       <td>{prod.name}</td>
-                      <td>${prod.costPrice}</td>
                       <td>${prod.price}</td>
-                      <td>{prod.brand}</td>
                       <td>{prod.category}</td>
                       <td>{prod.countInStock}</td>
 
-                      <td className='btn-group' role='group'>
+                      <td className="btn-group" role="group">
                         <button
-                          className='btn btn-light btn-sm'
+                          className="btn btn-light btn-sm"
                           onClick={(e) => editHandler(prod)}
-                          data-bs-toggle='modal'
-                          data-bs-target='#productModal'
+                          data-bs-toggle="modal"
+                          data-bs-target="#productModal"
                         >
                           <FaEdit /> Edit
                         </button>
                         {userInfo && userInfo.isAdmin && (
                           <button
-                            className='btn btn-danger btn-sm'
+                            className="btn btn-danger btn-sm"
                             onClick={() => deleteHandler(prod._id)}
                           >
                             <FaTrash /> Delete
@@ -411,12 +405,12 @@ const ProductScreen = () => {
               </tbody>
             </table>
             {products && !loading && products.length === 0 && (
-              <span className='text-danger d-flex justify-content-center'>
+              <span className="text-danger d-flex justify-content-center">
                 No data found!
               </span>
             )}
 
-            <div className='d-flex justify-content-center'>
+            <div className="d-flex justify-content-center">
               <Pagination
                 setCurrentPage={setCurrentPage}
                 totalItems={totalItems}
@@ -428,7 +422,7 @@ const ProductScreen = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProductScreen
+export default ProductScreen;

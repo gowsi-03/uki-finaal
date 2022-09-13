@@ -44,6 +44,8 @@ const ProfileScreen = ({ history }) => {
   }
   return (
     <div className='container'>
+       <div className="card" style={{width: '70rem', marginBottom: '4.2px'}}>
+      <div className="card-body">
       <div className='row'>
         <div className='col-lg-4 col-md-5 col-sm-12 col-12'>
           <h4>User Profile</h4>
@@ -151,6 +153,8 @@ const ProfileScreen = ({ history }) => {
             </table>
           )}
         </div>
+      </div>
+      </div>
       </div>
     </div>
   )

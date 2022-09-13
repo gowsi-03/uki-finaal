@@ -43,10 +43,10 @@ const HomeScreen = ({ match }) => {
           <div className="container">
             <div className="row mt-5">
               <div className="col-s-12 col-md-12 col-sm-12 col-12">
-                <div className="form-group ">
+                <div className="form-group">
                   <input
                     type="text"
-                    className="form-control rounded-pill shadow-sm "
+                    className="form-control rounded-pill shadow-sm bg-info"
                     placeholder="Search by product name"
                     name="search"
                     min="0"

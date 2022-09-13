@@ -24,7 +24,9 @@ const LoginScreen = ({ history }) => {
   }
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <div className="card" style={{width: '30rem', marginBottom: '49.2px'}}>
+      <div className="card-body">
+      <h1 className='d-flex justify-content-center'>Sign In</h1>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader></Loader>}
 
@@ -39,6 +41,7 @@ const LoginScreen = ({ history }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+        
 
         <div className='form-group'>
           <label htmlFor='password'>Password</label>
@@ -60,6 +63,8 @@ const LoginScreen = ({ history }) => {
           New Customer?
           <Link to='/register'> Register</Link>
         </div>
+      </div>
+      </div>
       </div>
     </FormContainer>
   )

@@ -7,6 +7,7 @@ import whyImg from "../assets/images/why.png";
 import networkImg from "../assets/images/network.png";
 import Testimonal from "../components/Testimonal";
 import Product from "../components/Header";
+import Slider from "../components/Slider";
 
 import featureImg01 from "../assets/images/service-01.png";
 import featureImg02 from "../assets/images/service-02.png";
@@ -16,13 +17,13 @@ const featureData = [
   {
     title: "Quick Delivery",
     imgUrl: featureImg01,
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.",
+    desc: "Experience Swiggy's superfast delivery for food delivered fresh & on time.",
   },
 
   {
     title: "Super Dine In",
     imgUrl: featureImg02,
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.",
+    desc: "Customer support is one thing that we value a lot. Call us for any issues any time.",
   },
   {
     title: "Easy Pick Up",
@@ -68,7 +69,7 @@ const Home = () => {
   return (
     <>
       <section>
-        <Container>
+        <div className="container-lg">
           <Row>
             <Col lg="6" md="6">
               <div className="hero__content  ">
@@ -79,8 +80,8 @@ const Home = () => {
                 </h1>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-                  magni delectus tenetur autem, sint veritatis!
+                  Welcome to the city’s favourite online delivery menu featuring
+                  some of the finest dishes from The Vethupii, Jaffna
                 </p>
 
                 <div className="hero__btns d-flex align-items-center gap-5 mt-4">
@@ -114,11 +115,11 @@ const Home = () => {
             <Col lg="6" md="6">
               <div className="hero__img justify-content-center">
                 {/* <img src={heroImg} alt="hero-img" className="w-100" /> */}
-                {/* <Slider/> */}
+                <Slider />
               </div>
             </Col>
           </Row>
-        </Container>
+        </div>
       </section>
 
       {/* <section className="pt-0">
@@ -135,13 +136,9 @@ const Home = () => {
                 we will <span>take care</span>
               </h2>
               <p className="mb-1 mt-4 feature__text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-                officiis?
+              We give our customers the best dining experiences possible
               </p>
-              <p className="feature__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aperiam, eius.{" "}
-              </p>
+              
             </Col>
 
             {featureData.map((item, index) => (
