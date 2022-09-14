@@ -136,9 +136,8 @@ const Home = () => {
                 we will <span>take care</span>
               </h2>
               <p className="mb-1 mt-4 feature__text">
-              We give our customers the best dining experiences possible
+                We give our customers the best dining experiences possible
               </p>
-              
             </Col>
 
             {featureData.map((item, index) => (
@@ -284,9 +283,9 @@ const Home = () => {
                   What our <span>customers</span> are saying
                 </h2>
                 <p className="testimonial__desc">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Distinctio quasi qui minus quos sit perspiciatis inventore
-                  quis provident placeat fugiat!
+                  The client is the king. A king is treated royally whether it
+                  is a small territory or an entire country. Every business is
+                  the same for us.
                 </p>
 
                 <Testimonal />

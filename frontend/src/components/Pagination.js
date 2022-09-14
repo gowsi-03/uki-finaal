@@ -11,10 +11,10 @@ const Pagination = ({
     <>
       {arrayLength > itemsPerPage && (
         <ReactPaginate
-          previousLabel='P'
+          previousLabel='Perivious'
           previousClassName='page-item'
           previousLinkClassName='page-link'
-          nextLabel='N'
+          nextLabel='Next'
           nextClassName='page-item'
           nextLinkClassName='page-link'
           pageClassName='page-item'

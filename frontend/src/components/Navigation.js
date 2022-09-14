@@ -20,7 +20,7 @@ const Navigation = () => {
   const authLinks = (
     <ul className='navbar-nav mr-right mb-2 mb-lg-0'>
       <li className='nav-item dropdown'>
-        <span
+        <span style={{fontSize:'18px'}}
           className='nav-link dropdown-toggle'
           id='navbarDropdown'
           role='button'
@@ -45,7 +45,7 @@ const Navigation = () => {
 
       {userInfo && userInfo.isAdmin && (
         <li className='nav-item dropdown'>
-          <span
+          <span style={{fontSize:'18px'}}
             className='nav-link dropdown-toggle'
             id='navbarDropdown'
             role='button'

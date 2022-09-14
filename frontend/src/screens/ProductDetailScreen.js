@@ -37,16 +37,16 @@ const ProductDetailScreen = ({ match, history }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <div className="container">
+        <div className="container my-5">
           <div className="row">
-            <div className="col-6">
+            <div className="col-4 mx-auto">
               <img
                 src={product.image.imagePath}
                 className="img-fluid w-95"
                 alt=""
               />
             </div>
-            <div className="col-6 my-auto">
+            <div className="col-6">
               <h1 className="fs-3"> {product.name}</h1>
               <h2 className="fs-6 custom-text-color"> Rs&nbsp;{totalPrice}</h2>
               <p>

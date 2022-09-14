@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listOrders, deliverOrder  } from '../actions/orderActions'
 import { FaTimes } from 'react-icons/fa'
+
+import Pagination from '../components/Pagination'
 
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -24,14 +26,24 @@ const OrderListScreen = ({ history }) => {
     dispatch(deliverOrder(id, formData))
 }
 
+const [currentPage, setCurrentPage] = useState(1)
+
+  const itemsPerPage = 8
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = orders && orders.slice(indexOfFirstItem, indexOfLastItem)
+  const totalItems = orders && Math.ceil(orders.length / itemsPerPage)
+
 
   return (
     <div className='container'>
+        <h1>Users</h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
+        
         <table className='table table-borderless table-sm'>
           <thead>
             <tr>
@@ -41,11 +53,11 @@ const OrderListScreen = ({ history }) => {
               <th>TOTAL</th>
               <th>PAID</th>
               <th>DELIVERED</th>
-              <th></th>
+              <hr></hr>
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {currentItems.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
@@ -84,6 +96,14 @@ const OrderListScreen = ({ history }) => {
           </tbody>
         </table>
       )}
+       <div className='d-flex justify-content-center'>
+            <Pagination
+              setCurrentPage={setCurrentPage}
+              totalItems={totalItems}
+              arrayLength={orders && orders.length}
+              itemsPerPage={itemsPerPage}
+            />
+          </div>
     </div>
   )
 }

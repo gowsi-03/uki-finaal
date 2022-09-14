@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react'
 import { FaInfo } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
@@ -23,7 +24,6 @@ const ProductScreen = ({ currentItems }) => {
               </Link>
               <div className='card-body'>
                 <p className='card-text'>
-                  {/* <span className='fw-light '>{item.category}</span> <br /> */}
                   <Link to={`/product/${item._id}`}>
                     <span className='fw-bold fs-6'>{item.name}</span>
                   </Link>{' '}

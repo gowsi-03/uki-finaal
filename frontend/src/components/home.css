@@ -134,7 +134,11 @@
   color: #ad6031;
 }
 
+/* img{
+margin-top: 80px;
+} */
 .testimonial__desc {
+  font-size: 1.02rem;
   color: #212529;
   line-height: 30px;
 }

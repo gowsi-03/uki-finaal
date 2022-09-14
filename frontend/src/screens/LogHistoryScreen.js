@@ -77,10 +77,10 @@ const UserLogHistoryScreen = () => {
           {logHistory && logHistory.length > itemsPerPage && (
             <div className='d-flex justify-content-center'>
               <ReactPaginate
-                previousLabel='previous'
+                previousLabel='Previous'
                 previousClassName='page-item'
                 previousLinkClassName='page-link'
-                nextLabel='next'
+                nextLabel='Next'
                 nextClassName='page-item'
                 nextLinkClassName='page-link'
                 pageClassName='page-item'
