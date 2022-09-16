@@ -38,7 +38,7 @@ const ProductDetailScreen = ({ match, history }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <div className="container my-5">
-          <div className="row">
+          <div className="adds row">
             <div className="col-4 mx-auto">
               <img
                 src={product.image.imagePath}

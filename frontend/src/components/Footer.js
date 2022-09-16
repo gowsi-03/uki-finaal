@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./footer.css";
-import logo from '../assets/images/logo.png'
+import logo from "../assets/images/logo.png";
 
 const Footer = () => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowAlert(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <footer className="footer">
       <Container>
@@ -50,10 +57,19 @@ const Footer = () => {
 
           <Col lg="3" md="4" sm="6">
             <h5 className="footer__title">Newsletter</h5>
+            {showAlert && (
+              <span style={{ color: "green", fontWeight: "bold" }}>
+                Email Sent Successfully!
+              </span>
+            )}
             <p>Subscribe our newsletter</p>
             <div className="newsletter">
               <input type="email" placeholder="Enter your email" />
-              <span>
+              <span
+                onClick={() => {
+                  setShowAlert(!showAlert);
+                }}
+              >
                 <i class="ri-send-plane-line"></i>
               </span>
             </div>

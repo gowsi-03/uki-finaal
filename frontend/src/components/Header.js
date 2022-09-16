@@ -41,12 +41,13 @@ const HomeScreen = ({ match }) => {
       ) : (
         <>
           <div className="container">
-            <div className="row mt-5">
+            <div className="col">
               <div className="col-s-12 col-md-12 col-sm-12 col-12">
+                <br/>
                 <div className="form-group">
                   <input
                     type="text"
-                    className="form-control rounded-pill shadow-sm bg-info"
+                    className="form-control rounded-pill shadow-sm bg-secondary"
                     placeholder="Search by product name"
                     name="search"
                     min="0"
@@ -64,9 +65,6 @@ const HomeScreen = ({ match }) => {
                     itemsPerPage={itemsPerPage}
                   />
                 </div>
-              </div>
-              <div className="col-lg-3 col-md-3 col-sm-12 col-12">
-                <ShoppingCategoryScreen />
               </div>
             </div>
           </div>

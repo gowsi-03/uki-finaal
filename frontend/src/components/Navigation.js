@@ -20,7 +20,7 @@ const Navigation = () => {
   const authLinks = (
     <ul className='navbar-nav mr-right mb-2 mb-lg-0'>
       <li className='nav-item dropdown'>
-        <span style={{fontSize:'18px'}}
+        <span style={{fontSize:'16px'}}
           className='nav-link dropdown-toggle'
           id='navbarDropdown'
           role='button'
@@ -45,7 +45,7 @@ const Navigation = () => {
 
       {userInfo && userInfo.isAdmin && (
         <li className='nav-item dropdown'>
-          <span style={{fontSize:'18px'}}
+          <span style={{fontSize:'16px'}}
             className='nav-link dropdown-toggle'
             id='navbarDropdown'
             role='button'
@@ -86,7 +86,7 @@ const Navigation = () => {
       
       <li className='nav-item'>
         <Link to='/login' className='nav-link'>
-       <FaUser fontSize='20px' />
+       <FaUser fontSize='16px' />
         </Link>
       </li>
     </ul>
@@ -129,7 +129,7 @@ const Navigation = () => {
                   aria-current='page'
                   to='/cart'
                 >
-                  <FaShoppingBag fontSize='20px' />{' '}
+                  <FaShoppingBag fontSize='16px' />{' '}
                   <sup>{cartItems && cartItems.length}</sup>
                 </Link>
               </li>
