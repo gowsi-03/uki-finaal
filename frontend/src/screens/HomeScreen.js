@@ -28,7 +28,7 @@ const featureData = [
   {
     title: "Easy Pick Up",
     imgUrl: featureImg03,
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.",
+    desc: "The user can easily pick up at our baked goods at your location if preferred.",
   },
 ];
 // import Slider from "./Slider";
@@ -228,10 +228,7 @@ const Home = () => {
                   Why <span>Vethuppi?</span>
                 </h2>
                 <p className="tasty__treat-desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolorum, minus. Tempora reprehenderit a corporis velit,
-                  laboriosam vitae ullam, repellat illo sequi odio esse iste
-                  fugiat dolor, optio incidunt eligendi deleniti!
+                  
                 </p>
 
                 <ListGroup className="mt-4" id="back">
@@ -241,8 +238,7 @@ const Home = () => {
                       foods
                     </p>
                     <p className="choose__us-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Quia, voluptatibus.
+                      We are only deliver fresh and tasty food with instance delivery 
                     </p>
                   </ListGroupItem>
 
@@ -251,8 +247,7 @@ const Home = () => {
                       <i class="ri-checkbox-circle-line"></i> Quality support
                     </p>
                     <p className="choose__us-desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Qui, earum.
+                    We give best quality in affodable price with added free items
                     </p>
                   </ListGroupItem>
 
@@ -262,8 +257,7 @@ const Home = () => {
                       location{" "}
                     </p>
                     <p className="choose__us-desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Qui, earum.
+                     Order from any location we will deliver for what time you need
                     </p>
                   </ListGroupItem>
                 </ListGroup>
@@ -282,11 +276,7 @@ const Home = () => {
                 <h2 className="testimonial__title mb-4">
                   What our <span>customers</span> are saying
                 </h2>
-                <p className="testimonial__desc">
-                  The client is the king. A king is treated royally whether it
-                  is a small territory or an entire country. Every business is
-                  the same for us.
-                </p>
+          
 
                 <Testimonal />
               </div>
