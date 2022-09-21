@@ -43,7 +43,7 @@ const Testimonal = () => {
           "பாணுக்காகா சந்தா முறைமூலம் பாண் விற்பனை செய்வதை விட  உடனுக்குடன் கொடுப்பனவு மேற்க்கொள்வது சிறந்தது."
         </p>
         <div className="slider__content d-flex align-items-center gap-3 ">
-          <img src={ava01} alt="avatar" className=" rounded" />
+          <img src={ava01} alt="avatar" className=" rounded"/>
           <h6>Piran</h6>
         </div>
       </div>
